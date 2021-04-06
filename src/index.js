@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import timeOut from './components/timeOut'
 
 ReactDOM.render(
+  timeOut,
   <React.StrictMode>
     <App />
   </React.StrictMode>,
