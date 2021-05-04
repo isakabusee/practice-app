@@ -1,15 +1,18 @@
 import './App.css';
-import { UseState } from './components/UseState/UseState';
+import { ButtonWrapper, UseState, Wrapper } from './components/UseState/UseState';
+
 
 function App() {
   
   return (
-    <div className="App">
-      
-      <header className="App-header">
+    <Wrapper>
       <UseState />
-      </header>
-    </div>
+
+      <ButtonWrapper>-</ButtonWrapper>
+      <span>0</span>
+      <ButtonWrapper>+</ButtonWrapper>
+    </Wrapper>
+
   );
 }
 
