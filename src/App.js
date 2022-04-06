@@ -1,11 +1,22 @@
 import './App.css';
 import { ButtonWrapper, UseState, Wrapper } from './components/UseState/UseState';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 function App() {
 
-  const [count, setCount] = useState(4)
+  const [count, setCount] = useState(4);
+  const [users, setUsers] = useState([]);
+
+  const fetchData = () => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => {response.json()})
+    .then(data => {setUsers(data)})
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
    
 
   function decrementCount() {
@@ -16,6 +27,16 @@ function App() {
   }
   
   return (
+    <>
+    <div>
+      {users.length > 0 && (
+        <ul>
+          {users.map(user => (
+            <li key={user.id}>{user.name}</li>
+          ))}
+        </ul>
+      )}
+    </div>
     <Wrapper>
       <UseState />
 
@@ -23,6 +44,7 @@ function App() {
       <span>{count}</span>
       <ButtonWrapper onClick={increaseCount}>+</ButtonWrapper>
     </Wrapper>
+    </>
 
   );
 }
